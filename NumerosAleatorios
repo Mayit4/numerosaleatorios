@@ -1,0 +1,21 @@
+IDENTIFICATION DIVISION.
+       PROGRAM-ID. GenerarNumerosAleatorios.
+       AUTHOR. Ejemplo COBOL.
+       
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+       01  NUMERO        PIC 9(3).
+       01  CONTADOR      PIC 9(2) VALUE 1.
+       
+       PROCEDURE DIVISION.
+       INICIO.
+           DISPLAY "Generando 10 números aleatorios: "
+           PERFORM GENERAR-NUMEROS VARYING CONTADOR FROM 1 BY 1 UNTIL CONTADOR > 10
+           STOP RUN.
+
+       GENERAR-NUMEROS.
+           MOVE FUNCTION NUMVAL (FUNCTION RANDOM) TO NUMERO
+           MULTIPLY NUMERO BY 100 GIVING NUMERO
+           ROUNDED
+           DISPLAY "Número " CONTADOR ": " NUMERO
+           .
